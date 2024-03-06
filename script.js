@@ -107,7 +107,14 @@ function addStratagemObject(icon) {
     arrowsTable.style.visibility = "invisible";
     let iconTable = document.getElementById("arrows-container");
     iconTable.hidden = false
-    currentStratagemsList.push(icon)
+    if (currentStratagemsList.length >= 4){
+        currentStratagemsList.pop()
+        currentStratagemsList.unshift(icon)
+    }
+    else{
+        currentStratagemsList.push(icon)
+    }
+    
       // Show stratagems
     refreshStratagemDisplay();
     
