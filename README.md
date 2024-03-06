@@ -1,0 +1,1 @@
+## Project is a clone of https://combustibletoast.github.io/. Instead of it being a game, you can choose 4 stratagems at a time to practice to help hone in your in game stratagem input times. Not much to it other than that
