@@ -100,6 +100,36 @@ function toggleDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
+function displayStratagemsList(){
+    const dropdownContent = document.getElementById('myDropdown');
+    for(let stratagem of stratagems){
+        const iconElement = document.createElement('a');
+        iconElement.href = "#";
+        iconElement.onclick = () => addStratagemObject(stratagem);
+  
+        const imgElement = document.createElement('img');
+        imgElement.src = `./Images/Stratagem\ Icons/${stratagem.image}`;
+        imgElement.alt = stratagem.name;
+        imgElement.style.width = '20px'; // Adjust the width of the image as needed
+  
+        iconElement.appendChild(imgElement); // Append the image before the icon name
+        iconElement.appendChild(document.createTextNode(` ${stratagem.name}`)); // Append the icon name after the image
+  
+        dropdownContent.appendChild(iconElement);
+    }
+}
+function clearStratagemsList(){
+    let arrowsTable = document.getElementById("stratagems-table");
+    arrowsTable.hidden = true
+    arrowsTable.style.visibility = "invisible";
+    let iconTable = document.getElementById("arrows-container");
+    iconTable.hidden = true
+    iconTable.style.visibility = "invisible";
+    document.getElementById("stratagem-name").innerHTML = "SELECT STRATAGEMS TO BEGIN"
+    currentStratagemsList = []
+    selectedStratagems =[]
+}
+
 // Function to add object to array
 function addStratagemObject(icon) {
     let arrowsTable = document.getElementById("stratagems-table");
@@ -119,6 +149,8 @@ function addStratagemObject(icon) {
     refreshStratagemDisplay();
     
 }
+
+displayStratagemsList()
 
 // Show directional buttons if user is on mobile
 if(userIsMobile())
@@ -260,10 +292,6 @@ function refreshStratagemDisplay(){
     document.getElementById("stratagem-name").innerHTML = currentStratagemsList[0].name;
 }
 
-function pickRandomStratagem(){
-    return stratagems[Math.floor(Math.random() * stratagems.length)];
-}
-
 function showArrowSequence(arrowSequence, arrowsContainer){
     if(arrowsContainer == undefined)
         arrowsContainer = document.getElementById("arrows-container");
@@ -299,37 +327,6 @@ function showArrowSequence(arrowSequence, arrowsContainer){
         arrowTags.push(img);
     }
     return arrowTags;
-}
-
-function gameOver(){
-    //Stop the game
-    gameState = "over";
-
-    // Write score to readout
-    let scoreReadout = document.getElementById("score-readout");
-    scoreReadout.innerHTML = `SCORE: ${completedStrategemsList.length}`
-
-    // Write completed strategems to readout
-    let stratagemReadout = document.getElementById("completed-strategems-readout");
-    stratagemReadout.innerHTML = stratagemListToString(true);
-
-    // Show refresh arrow sequence
-    let sequence = ["Arrow_4_U.png", "Arrow_1_D.png", "Arrow_3_R.png", "Arrow_2_L.png", "Arrow_4_U.png"];
-    let container = document.getElementById("refresh-arrows-container");
-    refreshArrowSequenceTags = showArrowSequence(sequence, container);
-
-    // Hide the game
-    let game = document.getElementById("interactable-center-container");
-    game.setAttribute("hidden", "hidden");
-    game.style.visibility = "invisible";
-
-    // Show the popup
-    let popup = document.getElementById("game-over-popup");
-    popup.removeAttribute("hidden");
-    popup.style.visibility = "visible";
-
-    // Play game over sfx
-    sfxGameOver[Math.floor(Math.random() * sfxGameOver.length)].play();
 }
 
 function stratagemListToString(html, spamless){
@@ -389,33 +386,4 @@ function showMobileButtons() {
     container.style.visibility = "visible";
 }
 
-function displayStratagemsList(){
-    const dropdownContent = document.getElementById('myDropdown');
-    for(let stratagem of stratagems){
-        const iconElement = document.createElement('a');
-        iconElement.href = "#";
-        iconElement.onclick = () => addStratagemObject(stratagem);
-  
-        const imgElement = document.createElement('img');
-        imgElement.src = `./Images/Stratagem\ Icons/${stratagem.image}`;
-        imgElement.alt = stratagem.name;
-        imgElement.style.width = '20px'; // Adjust the width of the image as needed
-  
-        iconElement.appendChild(imgElement); // Append the image before the icon name
-        iconElement.appendChild(document.createTextNode(` ${stratagem.name}`)); // Append the icon name after the image
-  
-        dropdownContent.appendChild(iconElement);
-    }
-}
-displayStratagemsList()
-function clearStratagemsList(){
-    let arrowsTable = document.getElementById("stratagems-table");
-    arrowsTable.hidden = true
-    arrowsTable.style.visibility = "invisible";
-    let iconTable = document.getElementById("arrows-container");
-    iconTable.hidden = true
-    iconTable.style.visibility = "invisible";
-    document.getElementById("stratagem-name").innerHTML = "SELECT STRATAGEMS TO BEGIN"
-    currentStratagemsList = []
-    selectedStratagems =[]
-}
+
