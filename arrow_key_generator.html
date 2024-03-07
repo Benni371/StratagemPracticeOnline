@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Print Keystrokes</title>
+</head>
+<body>
+  <h1>Type with arrow keys to generate codes:</h1>
+  <hr>
+  <div id="moreinfo">
+    <button onclick="displayInfo()">Click here for more info</button>
+    <p id="info"></p>
+  </div>
+  <div id="output"></div>
+  
+  <script>
+
+
+    function displayInfo(){
+        document.getElementById("info").innerHTML = "In order to generate the correct icons in the code for the arrow keys you have to use their associated png. This generator enables this process to be faster by outputting the keys as the pngs so you can pass them in the json instead of typing them out"
+    }
+
+    document.addEventListener('keydown', function(event) {
+      // Get the key that was pressed
+      const key = event.key;
+      
+      // Get the element where we want to display the keystrokes
+      const outputElement = document.getElementById('output');
+      let output_key = ""
+      switch (key) {
+        case "ArrowUp":
+            output_key = "up.png"
+            outputElement.innerHTML += `"${output_key}",<br>`;
+            break;
+        case "ArrowDown":
+          output_key = "down.png"
+            outputElement.innerHTML += `"${output_key}",<br>`;
+            break;
+        case "ArrowLeft":
+            output_key = "left.png"
+            outputElement.innerHTML += `"${output_key}",<br>`;
+            break;
+        case "ArrowRight":
+            output_key = "right.png"
+            outputElement.innerHTML += `"${output_key}",<br>`;
+            break;
+        default:
+            break;
+      }
+      
+      // Append the key to the element content
+    });
+  </script>
+</body>
+</html>
