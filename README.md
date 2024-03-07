@@ -1,7 +1,6 @@
 
 # STRATAGEM PRACTICE ONLINE
-Project is a clone of https://combustibletoast.github.io/. Instead of it being a game, you can choose 4 stratagems at a time to practice to help hone in your in game stratagem input times. Not much to it other than that
-This project is to help players of Helldivers 2 hone their skills when it comes to putting in stratagems.
+Project is a clone of https://combustibletoast.github.io/. Instead of it being a game, you can choose 4 stratagems at a time to practice inputting the correct sequence in. Any good Helldiver knows that speed is key when requesting support. So go out there and spread democracy!
 ## FILES/FOLDERS
 `index.html`: main document for styling and markup of the practice page  
 `arrow_key_generator`: a document that is used for generating the json for arrow keys  
