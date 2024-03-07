@@ -108,7 +108,7 @@ function displayStratagemsList(){
         iconElement.onclick = () => addStratagemObject(stratagem);
   
         const imgElement = document.createElement('img');
-        imgElement.src = `./Images/Stratagem\ Icons/${stratagem.image}`;
+        imgElement.src = `Images/${stratagem.image}`;
         imgElement.alt = stratagem.name;
         imgElement.style.width = '20px'; // Adjust the width of the image as needed
   
@@ -282,7 +282,7 @@ function refreshStratagemDisplay(){
     if (currentStratagemsList.length == 0){currentStratagemsList = currentStratagemsList.concat(selectedStratagems)}
     for(let i in currentStratagemsList){
         // Show the stratagem's picture in the correct slot
-        document.getElementById(`stratagem-icon-${i}`).src = `./Images/Stratagem\ Icons/${currentStratagemsList[i].image}`;
+        document.getElementById(`stratagem-icon-${i}`).src = `./Images/${currentStratagemsList[i].image}`;
     }
 
     // Show arrow icons for the current active stratagem
@@ -310,16 +310,16 @@ function showArrowSequence(arrowSequence, arrowsContainer){
 
         // Map filename to keycode
         switch(arrow){
-            case "Arrow_4_U.png":
+            case "up.png":
                 img.code = "KeyW";
             break;
-            case "Arrow_1_D.png":
+            case "down.png":
                 img.code = "KeyS";
             break;
-            case "Arrow_2_L.png":
+            case "left.png":
                 img.code = "KeyA";
             break;
-            case "Arrow_3_R.png":
+            case "right.png":
                 img.code = "KeyD";
             break;
         }
@@ -343,16 +343,16 @@ function stratagemListToString(html, spamless){
         //Put arrows
         for(let arrow of stratagem.sequence){
             switch(arrow){
-                case "Arrow_4_U.png":
+                case "up.png":
                     line += up; 
                 break;
-                case "Arrow_1_D.png":
+                case "down.png":
                     line += down;
                 break;
-                case "Arrow_2_L.png":
+                case "left.png":
                     line += left;
                 break;
-                case "Arrow_3_R.png":
+                case "right.png":
                     line += right;
                 break;
             }
